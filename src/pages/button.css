@@ -1,0 +1,99 @@
+/* Button styles */
+.button {
+  margin-top: 2rem;
+  /* mt-8 equivalent */
+  background-color: #3b82f6;
+  /* bg-blue-500 equivalent */
+  color: white;
+  /* text-white equivalent */
+  width: 100%;
+  /* Make button width responsive */
+  max-width: 24rem;
+  /* Maximum width to prevent it from getting too large */
+  padding: 1rem 2rem;
+  /* for button size */
+  border-radius: 2rem;
+  /* rounded */
+  transition: background-color 0.3s ease;
+  /* hover:bg-blue-600 and transition equivalent */
+  font-size: 1.5rem;
+  /* Adjusted for better readability on smaller screens */
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+}
+
+/* Hover state */
+.button:hover {
+  background-color: #2563eb;
+  /* bg-blue-600 equivalent */
+}
+
+/* Additional customization */
+.button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+  /* Optional: adds a focus ring */
+}
+
+/* Container styles */
+.box {
+  text-align: center;
+  /* text-center equivalent */
+  width: 90%;
+  /* Adjusts width based on screen size */
+  max-width: 40rem;
+  /* Limits the maximum width */
+  max-height: 40rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  /* shadow-2xl equivalent */
+  background-color: white;
+  /* bg-white equivalent */
+  display: flex;
+  /* flex equivalent */
+  flex-direction: column;
+  /* flex-col equivalent */
+  border-radius: 1rem;
+  /* rounded-2xl equivalent */
+  gap: 0.5rem;
+  /* gap-2 equivalent */
+  padding: 1.5rem;
+  /* p-6 equivalent */
+  margin: 1rem auto;
+  /* Centering the container */
+}
+
+/* Media queries for smaller screens */
+@media (max-width: 768px) {
+  .button {
+    font-size: 1.25rem;
+    /* Slightly smaller font size on smaller screens */
+    padding: 0.75rem 1.5rem;
+    /* Adjust padding for smaller screens */
+    max-width: 20rem;
+    /* Adjust max width on smaller screens */
+  }
+
+  .box {
+    padding: 1rem;
+    /* Reduce padding on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .button {
+    font-size: 1rem;
+    /* Further reduce font size for very small screens */
+    padding: 0.5rem 1rem;
+    /* Adjust padding for very small screens */
+    max-width: 18rem;
+    /* Further adjust max width on very small screens */
+  }
+
+  .box {
+    width: 95%;
+    /* Increase width to almost full screen on very small screens */
+    padding: 0.5rem;
+    /* Further reduce padding on very small screens */
+  }
+}
