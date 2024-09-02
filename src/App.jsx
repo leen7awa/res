@@ -5,6 +5,16 @@ import MenuPage from "./pages/Menu";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
+
+// require('dotenv').config();
+// const mongoose = require('mongoose');
+
+// mongoose.connect(process.env.MONGODB_URI, {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
+
+
 function App() {
   const [seatOption, setSeatOption] = useState("");
 

@@ -1,8 +1,8 @@
 const Footer = () => {
     return (
         <>
-            <footer className="relative w-full bg-gray-100 dark:bg-slate-800 text-black p-4 sm:p-6 md:p-8 text-center shadow-lg">
-                <p className="text-sm sm:text-base md:text-lg">
+            <footer className="fixed bottom-0 w-full bg-gray-100 text-black p-2 text-center shadow-lg h-12">
+                <p className="text-xs sm:text-sm md:text-base">
                     &copy; footer
                 </p>
             </footer>

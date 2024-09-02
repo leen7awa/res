@@ -2,8 +2,9 @@ import React from 'react';
 import subMenu from '../../db/submenu';
 import menu from '../../db/menu';
 import '../../pages/button.css';
+import './MenuLayout2.css';
 
-const MenuLayout2 = ({ chosenCategory, setChosenWindow, setItemDetails}) => {
+const MenuLayout2 = ({ chosenCategory, setChosenWindow, setItemDetails }) => {
     const selectedMenuItem = menu.data.find(menuItem => menuItem.id === chosenCategory);
 
     const handleItemClick = (subMenuItem) => {
@@ -17,26 +18,26 @@ const MenuLayout2 = ({ chosenCategory, setChosenWindow, setItemDetails}) => {
 
     return (
         <>
-            <h2 className="text-4xl font-bold">
+            <h2 className="menu-layout-title">
                 {selectedMenuItem.name}
             </h2>
-            <div className="grid grid-cols-3 gap-4 mt-4 overflow-y-auto">
+            <div className="menu-grid">
                 {subMenu.data
                     .filter(subMenuItem => subMenuItem.menu_id === chosenCategory)
                     .map(subMenuItem => (
-                        <div key={subMenuItem.id} className="mb-4">
+                        <div key={subMenuItem.id} className="menu-item">
                             <button
-                                className="border border-black flex flex-col p-4 text-center items-center min-w-40 rounded-lg"
+                                className="menu-button"
                                 onClick={() => handleItemClick(subMenuItem)}
                             >
-                                <div> {subMenuItem.name}</div>
+                                <div>{subMenuItem.name}</div>
                                 <div>{subMenuItem.price}₪</div>
                             </button>
                         </div>
                     ))}
             </div>
             <button
-                className="button p-2 w-1/3 mt-4"
+                className="button p-2 w-full md:w-1/4 mt-4"
                 onClick={() => setChosenWindow(1)}
             >
                 Back

@@ -97,3 +97,13 @@
     /* Further reduce padding on very small screens */
   }
 }
+
+/* Hide scrollbar for all elements */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
