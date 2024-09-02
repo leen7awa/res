@@ -1,0 +1,30 @@
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #f3f4f6; /* Equivalent to bg-gray-100 */
+    color: #000000; /* Equivalent to text-black */
+    padding: 0.5rem; /* Smaller padding */
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Equivalent to shadow-lg */
+    height: 3rem; /* Equivalent to h-12 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer p {
+    font-size: 0.875rem; /* Equivalent to text-sm */
+}
+
+@media (min-width: 640px) {
+    .footer p {
+        font-size: 1rem; /* Equivalent to text-base */
+    }
+}
+
+@media (min-width: 768px) {
+    .footer p {
+        font-size: 1.125rem; /* Equivalent to text-lg */
+    }
+}

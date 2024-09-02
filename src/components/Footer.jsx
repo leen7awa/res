@@ -1,10 +1,11 @@
+import React from 'react';
+import './Footer.css'; // Import the CSS file
+
 const Footer = () => {
     return (
         <>
-            <footer className="fixed bottom-0 w-full bg-gray-100 text-black p-2 text-center shadow-lg h-12">
-                <p className="text-xs sm:text-sm md:text-base">
-                    &copy; footer
-                </p>
+            <footer className="footer">
+                <p>&copy; footer</p>
             </footer>
         </>
     );
