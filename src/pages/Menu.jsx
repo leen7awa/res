@@ -7,7 +7,7 @@ const Menu = () => {
     const [expandedId, setExpandedId] = useState(null);
     const [chosenCategory, setChosenCategory] = useState(0);
     const [chosenWindow, setChosenWindow] = useState(1);
-    const [itemDetails, setItemDetails] = useState({ name: '', price: '', desc: '' });
+    const [itemDetails, setItemDetails] = useState({ id: '', name: '', price: '', desc: '' });
 
     const toggleCollapse = (id) => {
         setExpandedId(prevId => (prevId === id ? null : id));
@@ -33,9 +33,9 @@ const Menu = () => {
                     />
                 );
             case 3:
-                return <MenuLayout3 
-                setChosenWindow={setChosenWindow}
-                itemDetails={itemDetails} 
+                return <MenuLayout3
+                    setChosenWindow={setChosenWindow}
+                    itemDetails={itemDetails}
                 />;
             default:
                 break;

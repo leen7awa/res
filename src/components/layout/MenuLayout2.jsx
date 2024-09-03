@@ -9,6 +9,7 @@ const MenuLayout2 = ({ chosenCategory, setChosenWindow, setItemDetails }) => {
 
     const handleItemClick = (subMenuItem) => {
         setItemDetails({
+            id: subMenuItem.id,
             name: subMenuItem.name,
             price: subMenuItem.price,
             desc: subMenuItem.desc
