@@ -3,7 +3,7 @@ import MenuLayout1 from '../components/layout/MenuLayout1';
 import MenuLayout2 from '../components/layout/MenuLayout2';
 import MenuLayout3 from '../components/layout/MenuLayout3';
 
-const Menu = () => {
+const Menu = ({ addItemToCart, cartItems }) => {
     const [expandedId, setExpandedId] = useState(null);
     const [chosenCategory, setChosenCategory] = useState(0);
     const [chosenWindow, setChosenWindow] = useState(1);
@@ -36,6 +36,7 @@ const Menu = () => {
                 return <MenuLayout3
                     setChosenWindow={setChosenWindow}
                     itemDetails={itemDetails}
+                    addItemToCart={addItemToCart}
                 />;
             default:
                 break;

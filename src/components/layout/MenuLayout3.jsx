@@ -3,7 +3,7 @@ import extras from '../../db/extras.json';
 import tosafot from '../../db/tosafot.json';
 import '../../pages/button.css';
 
-const MenuLayout3 = ({ setChosenWindow, itemDetails }) => {
+const MenuLayout3 = ({ setChosenWindow, itemDetails, addItemToCart }) => {
     const itemTosafot = tosafot.data.filter(tosaf => tosaf.item_id === itemDetails.id);
     const [inputValue, setInputValue] = useState('');
     const [checkedExtras, setCheckedExtras] = useState([]);
@@ -12,14 +12,19 @@ const MenuLayout3 = ({ setChosenWindow, itemDetails }) => {
         setInputValue(event.target.value);
     };
 
-    const handleCheckboxChange = (event, extraName) => {
+    const handleCheckboxChange = (event, extraName, tosafPrice) => {
         if (event.target.checked) {
-            // Add the extra name to the checkedExtras array
-            setCheckedExtras([...checkedExtras, extraName]);
+            // Add the extra name and tosaf price to the checkedExtras array
+            setCheckedExtras([...checkedExtras, { name: extraName, price: tosafPrice }]);
         } else {
-            // Remove the extra name from the checkedExtras array
-            setCheckedExtras(checkedExtras.filter(name => name !== extraName));
+            // Remove the extra name and tosaf price from the checkedExtras array
+            setCheckedExtras(checkedExtras.filter(extra => extra.name !== extraName));
         }
+    };
+
+    const handleAddToCart = () => {
+        addItemToCart(itemDetails, checkedExtras, inputValue);
+        alert("item added to cart");
     };
 
     return (
@@ -48,7 +53,7 @@ const MenuLayout3 = ({ setChosenWindow, itemDetails }) => {
                                                 type="checkbox"
                                                 value={extra.name}
                                                 className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
-                                                onChange={(event) => handleCheckboxChange(event, extra.name)}
+                                                onChange={(event) => handleCheckboxChange(event, extra.name, tosaf.tosaf_price)}
                                             />
                                         </div>
                                     )}
@@ -71,13 +76,13 @@ const MenuLayout3 = ({ setChosenWindow, itemDetails }) => {
                     />
                 </div>
 
-
                 <button
                     className="button"
                     onClick={() => {
-                        console.log(inputValue)
-                        console.log(checkedExtras)
-                    }}
+                        // console.log(itemDetails, checkedExtras, inputValue)
+                        handleAddToCart()
+                    }
+                    }
                 >
                     Add to cart
                 </button>
