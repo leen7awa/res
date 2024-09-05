@@ -6,6 +6,16 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Cart from "./pages/Cart";
 
+
+// require('dotenv').config();
+// const mongoose = require('mongoose');
+
+// mongoose.connect(process.env.MONGODB_URI, {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
+
+
 function App() {
   const [seatOption, setSeatOption] = useState("");
   const [cartItems, setCartItems] = useState([]);
@@ -25,26 +35,27 @@ function App() {
     ]);
   };
 
-  // Load cart items from localStorage if available
+  useEffect(() => {
+    // console.log("Cart items updated:", cartItems);
+  }, [cartItems]);
+
   useEffect(() => {
     const savedCartItems = localStorage.getItem('cartItems');
-    
-    // If no saved cart items, consider it the user's first visit and set the cart as empty
-    if (!savedCartItems) {
-      localStorage.setItem('firstVisit', 'true');
-      setCartItems([]); // Initialize the cart as empty on first visit
-    } else {
+    if (savedCartItems) {
       setCartItems(JSON.parse(savedCartItems));
     }
   }, []);
 
-  // Save cart items to localStorage whenever they change
   useEffect(() => {
-    if (localStorage.getItem('firstVisit') === 'false' || cartItems.length > 0) {
-      localStorage.setItem('cartItems', JSON.stringify(cartItems));
-      localStorage.setItem('firstVisit', 'false'); // Mark that it's no longer the first visit
-    }
+    const storedCartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+    setCartItems(storedCartItems);
+}, []);
+
+
+  useEffect(() => {
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
   }, [cartItems]);
+
 
   return (
     <>
