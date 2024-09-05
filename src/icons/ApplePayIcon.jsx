@@ -4,8 +4,8 @@ const ApplePayIcon = () => {
     return (
         <svg
             fill="#000000"
-            width="100px"  // Changed to 32px
-            height="100px" // Changed to 32px
+            width="100%"  // Changed to 32px
+            height="100%" // Changed to 32px
             viewBox="0 -34.55 120.3 120.3"
             xmlns="http://www.w3.org/2000/svg"
         >

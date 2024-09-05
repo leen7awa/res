@@ -44,7 +44,7 @@ const Checkout = ({ setActiveTab }) => {
                 </div>
 
 
-                <div className="flex flex-row w-1/2 justify-center items-center mx-auto gap-4 rounded-none px-2">
+                <div className="flex flex-row  w-[100%] justify-center items-center mx-auto gap-4 rounded-none px-2">
                     <button
                         id="takeaway-btn"
                         className="button bg-blue-400"

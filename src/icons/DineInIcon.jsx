@@ -4,8 +4,8 @@ const DineInIcon = () => {
     return (
         <svg
             fill="#000000"
-            width="200px"  // Changed to 32px
-            height="200px" // Changed to 32px
+            width="100%"
+            height="100%"
             viewBox="0 -20.55 122.88 122.88"
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"

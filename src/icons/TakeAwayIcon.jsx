@@ -4,8 +4,8 @@ const TakeAwayIcon = () => {
     return (
         <svg
             fill="#000000"
-            height="200px"  // Changed to 32px
-            width="200px"   // Changed to 32px
+            height="100%"  // Changed to 32px
+            width="100%"   // Changed to 32px
             version="1.1"
             viewBox="0 0 463 463"
             xmlns="http://www.w3.org/2000/svg"

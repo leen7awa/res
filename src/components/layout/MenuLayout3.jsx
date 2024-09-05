@@ -29,13 +29,13 @@ const MenuLayout3 = ({ setChosenWindow, itemDetails, addItemToCart }) => {
 
     return (
         <>
-            <div className='overflow-y-auto flex flex-col items-center'>
+            <div className='overflow-y-auto flex flex-col items-center w-[100%]'>
                 <h2 className="text-4xl font-bold">{itemDetails.name}</h2>
-                <div>img here</div>
+                {/* <div>img here</div> */}
                 <p className="text-xl mt-2">{itemDetails.price}₪</p>
                 <p className="text-lg mt-4">{itemDetails.desc}</p>
 
-                <h3 className="text-2xl font-semibold">{itemTosafot.length > 0 ? 'tosafot' : ''}</h3>
+                <h3 className="text-2xl font-semibold">{itemTosafot.length > 0 ? 'extras' : ''}</h3>
                 {itemTosafot.length > 0 ? (
                     <div className="flex flex-wrap justify-start">
                         {itemTosafot.map((tosaf, index) => {
@@ -44,10 +44,8 @@ const MenuLayout3 = ({ setChosenWindow, itemDetails, addItemToCart }) => {
                             return (
                                 <div key={index} className="flex flex-col items-start mt-2 mr-4">
                                     {extra && (
-                                        <div className="flex flex-row items-center">
-                                            <p className="mr-2">
-                                                {extra.name} {tosaf.tosaf_price > 0 ? `${tosaf.tosaf_price}₪` : ''}
-                                            </p>
+                                        <div className="flex flex-row items-center gap-1">
+                                            
                                             <input
                                                 id="default-checkbox"
                                                 type="checkbox"
@@ -55,6 +53,9 @@ const MenuLayout3 = ({ setChosenWindow, itemDetails, addItemToCart }) => {
                                                 className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
                                                 onChange={(event) => handleCheckboxChange(event, extra.name, tosaf.tosaf_price)}
                                             />
+                                            <p className="mr-2">
+                                                {extra.name} {tosaf.tosaf_price > 0 ? `${tosaf.tosaf_price}₪` : ''}
+                                            </p>
                                         </div>
                                     )}
                                 </div>
@@ -66,7 +67,7 @@ const MenuLayout3 = ({ setChosenWindow, itemDetails, addItemToCart }) => {
                     <></>
                 )}
 
-                <div className='items-start align-top'>
+                {/* <div className='items-start align-top'>
                     <input
                         type="text"
                         placeholder='extra text here'
@@ -74,7 +75,7 @@ const MenuLayout3 = ({ setChosenWindow, itemDetails, addItemToCart }) => {
                         value={inputValue}
                         onChange={handleInputChange}
                     />
-                </div>
+                </div> */}
 
                 <button
                     className="button"
