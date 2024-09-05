@@ -19,7 +19,7 @@ const Checkout = ({ setActiveTab }) => {
                         onClick={() => { setActiveTab('cart') }}>
                         <BackIcon />
                     </button>
-                    <h2 className="ml-[80px] text-4xl font-bold text-blue-700 mb-6 mx-auto">
+                    <h2 className="text-4xl font-bold text-blue-700 mb-6 mx-auto">
                         Payment Method
                     </h2>
                 </div>
@@ -44,8 +44,8 @@ const Checkout = ({ setActiveTab }) => {
                 </div>
 
 
-                <div className="flex flex-row  w-[100%] justify-center items-center mx-auto gap-4 rounded-none px-2">
-                    <button
+                <div className="flex flex-row max-w-[400px] justify-center items-center mx-auto gap-4 rounded-none px-2">
+                    {/* <button
                         id="takeaway-btn"
                         className="button bg-blue-400"
                         onClick={() => {
@@ -53,7 +53,7 @@ const Checkout = ({ setActiveTab }) => {
                         }}
                     >
                         <ApplePayIcon />
-                    </button>
+                    </button> */}
                     <button
                         id="takeaway-btn"
                         className="button bg-blue-400"
