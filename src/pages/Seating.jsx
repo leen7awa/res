@@ -1,5 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import TakeAwayIcon from '../icons/TakeAwayIcon';
+import DineInIcon from '../icons/DineInIcon';
 import './button.css';
 
 const Seating = ({ onSelectOption }) => {
@@ -12,21 +14,21 @@ const Seating = ({ onSelectOption }) => {
 
   return (
     <div className="box">
-      <h2 className="text-4xl font-bold">Select order type</h2>
-      <div className="flex flex-col w-1/2 justify-center items-center mx-auto">
+      <h2 className="text-4xl font-semibold">Select order type</h2>
+      <div className="flex flex-row w-fit justify-center items-center mx-auto gap-4">
         <button
           id="takeaway-btn"
-          className="button mt-4"
+          className="button text-black"
           onClick={() => handleOptionSelect("takeaway")}
         >
-          Take away
+          <TakeAwayIcon/>Take Away
         </button>
         <button
           id="seat-btn"
-          className="button mt-2"
+          className="button text-black"
           onClick={() => handleOptionSelect("seat")}
         >
-          Seat
+          <DineInIcon/>Seat
         </button>
       </div>
     </div>
