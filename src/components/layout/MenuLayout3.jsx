@@ -24,7 +24,7 @@ const MenuLayout3 = ({ setChosenWindow, itemDetails, addItemToCart }) => {
 
     const handleAddToCart = () => {
         addItemToCart(itemDetails, checkedExtras, inputValue);
-        alert("item added to cart");
+        // alert("item added to cart");
     };
 
     return (

@@ -4,10 +4,8 @@ import './button.css';
 import CartIcon from '../icons/CartIcon';
 
 const Cart = ({ cartItems, setCartItems }) => {
-
-    // Function to check for duplicates and add quantity
     const groupedItems = cartItems.reduce((acc, item) => {
-        // Find if the item already exists based on itemDetails.name, extras, and customText
+
         const existingItem = acc.find(
             (i) =>
                 i.itemDetails.name === item.itemDetails.name &&
@@ -23,12 +21,11 @@ const Cart = ({ cartItems, setCartItems }) => {
         return acc;
     }, []);
 
-    // Function to calculate total cost
     const calculateTotal = () => {
         return groupedItems.reduce((total, item) => {
-            // Assuming each item has a price in itemDetails.price
             const itemTotal = item.itemDetails.price * item.quantity;
-            return total + itemTotal;
+            const extrasTotal = item.extras.reduce((sum, extra) => sum + extra.price, 0);
+            return total + (itemTotal + extrasTotal * item.quantity);
         }, 0);
     };
 
@@ -42,32 +39,35 @@ const Cart = ({ cartItems, setCartItems }) => {
 
     return (
         <div className="box max-w-screen-2xl h-screen items-center">
-            <h2 className="text-4xl font-bold">Cart</h2>
+            <div className="justify-between">
+                <h2 className="text-4xl font-bold mb-4">Cart</h2>
 
-            <div className="flex flex-row max-h-[600px] overflow-y-auto items-center mt-24 rounded-2xl bg-slate-100">
-                {groupedItems.length > 0 ? (
-                    <CartTable groupedItems={groupedItems} />
-                ) : (
-                    <div className="h-40 w-48 mt-16">
-                        <div style={{ transform: 'scale(2)', display: 'inline-block' }}>
-                            <CartIcon />
+                <div className="flex flex-row items-center mt-auto">
+                    {groupedItems.length > 0 ? (
+                        <CartTable groupedItems={groupedItems} />
+                    ) : (
+                        <div className="h-40 w-48 mt-32">
+                            <div style={{ transform: 'scale(2)', display: 'inline-block' }}>
+                                <CartIcon />
+                            </div>
+                            <h3 className="font-bold mt-4">Your cart is empty.</h3>
                         </div>
-                        <h3 className="font-bold">Your cart is empty.</h3>
-                    </div>
-                )}
+                    )}
+                </div>
             </div>
-
             {/* Conditional Rendering for Buttons */}
             <div className="flex flex-col space-y-2 mt-auto mb-2 items-center">
                 {groupedItems.length > 0 && (
                     <>
                         <div className="flex flex-row mt-4">
-                            <h3 className="text-2xl font-bold">Total: ${totalCost.toFixed(2)}</h3>
-                            <button className="text-right" onClick={clearCart}>
+                            <h3 className="text-2xl font-bold">Total: ₪{totalCost.toFixed(2)}</h3>
+                            <button className="items-end" onClick={clearCart}>
                                 Clear Cart
                             </button>
                         </div>
-                        <button className="button py-2" onClick={() => alert(':)')}>
+                        <button
+                            className="button py-1 w-fit bg-blue-5 00"
+                            onClick={() => alert(':)')}>
                             Checkout
                         </button>
                     </>
