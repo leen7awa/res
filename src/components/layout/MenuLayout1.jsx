@@ -53,7 +53,8 @@ const MenuLayout1 = ({ setChosenCategory, setChosenWindow }) => {
 
             <button
                 className="button p-2 w-1/3"
-                onClick={() => navigate(-1)}
+                // onClick={() => navigate(-1)}
+                onClick={() => window.location.href = '/'}
             >
                 Back
             </button>

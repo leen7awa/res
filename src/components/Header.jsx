@@ -2,6 +2,8 @@ import CartIcon from "../icons/CartIcon";
 import LanguageIcon from "../icons/LanguageIcon";
 
 const Header = () => {
+    const commonButtonStyles = "text-gray-700 hover:text-blue-600 flex items-center justify-center";
+
 
     return (
         <div className="bg-white shadow-md fixed top-0 left-0 right-0 z-10">
@@ -11,10 +13,10 @@ const Header = () => {
                     menu
                 </button>
                 <nav className="ml-auto flex space-x-4">
-                    <a href="#" className="text-gray-700 hover:text-blue-600 flex items-center justify-center">
+                    <a href="#" className={commonButtonStyles}>
                         <LanguageIcon />
                     </a>
-                    <a href="/cart" className="text-gray-700 hover:text-blue-600 flex items-center justify-center">
+                    <a href="/cart" className={commonButtonStyles}>
                         <CartIcon />
                     </a>
                 </nav>

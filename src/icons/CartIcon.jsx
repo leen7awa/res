@@ -9,7 +9,7 @@ const CartIcon = () => {
             version="1.2"
             baseProfile="tiny"
             viewBox="0 0 24 24"
-            className="cursor-pointer"
+            // className="cursor-pointer"
             height="2em"
             width="2em"
             xmlns="http://www.w3.org/2000/svg"
