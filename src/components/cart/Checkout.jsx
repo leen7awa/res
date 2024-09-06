@@ -56,19 +56,19 @@ const Checkout = ({ setActiveTab }) => {
                     </button> */}
                     <button
                         id="takeaway-btn"
-                        className="button bg-blue-400"
+                        className="button bg-blue-500 text-black"
                         onClick={() => {
                             setPaymentMethod("cash")
                         }}
                     >
-                        <CashIcon />
+                        <CashIcon />Cash
                     </button>
                     <button
                         id="seat-btn"
-                        className="button bg-blue-400"
+                        className="button bg-blue-500 text-black"
                         onClick={() => setPaymentMethod("visa")}
                     >
-                        <VisaIcon />
+                        <VisaIcon />Card
                     </button>
                 </div>
             </div>
