@@ -127,7 +127,7 @@ const Cart = ({ cartItems, setCartItems }) => {
 
     return (
         <>
-            <div className="box max-w-screen-2xl h-screen items-center">
+            <div className="box max-w-screen-2xl h-[100%] items-center">
                 {renderCartWindows()}
             </div>
 
