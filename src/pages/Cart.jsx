@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useSyncExternalStore } from "react";
 import CartTable from "../components/cart/cartTable";
-import './button.css';
 import CartIcon from '../icons/CartIcon';
 import Checkout from "../components/cart/Checkout";
-import { render } from "react-dom";
+import './button.css';
 
 const Cart = ({ cartItems, setCartItems }) => {
     const [activeTab, setActiveTab] = useState("cart");
@@ -27,11 +26,15 @@ const Cart = ({ cartItems, setCartItems }) => {
 
     const calculateTotal = () => {
         return groupedItems.reduce((total, item) => {
-            const itemTotal = item.itemDetails.price * item.quantity;
-            const extrasTotal = item.extras.reduce((sum, extra) => sum + extra.price, 0);
-            return total + (itemTotal + extrasTotal * item.quantity);
+            const itemTotal = item.itemDetails.price * item.quantity; // Base item total
+            // Sum all extras for this item and multiply by the quantity
+            const extrasTotal = item.extras.reduce((sum, extra) => sum + (extra.price * item.quantity), 0);
+
+            // Return total cost including both item price and extras
+            return total + itemTotal + extrasTotal;
         }, 0);
     };
+
 
     const clearCart = () => {
         localStorage.removeItem("cartItems"); // Remove items from localStorage
@@ -46,7 +49,7 @@ const Cart = ({ cartItems, setCartItems }) => {
             case 'cart':
                 return renderCart();
             case 'checkout':
-                return <Checkout setActiveTab={setActiveTab}/>;
+                return <Checkout setActiveTab={setActiveTab} />;
             default:
                 break;
         }
