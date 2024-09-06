@@ -2,7 +2,7 @@ import React, { useState, useEffect, useSyncExternalStore } from "react";
 import CartTable from "../components/cart/cartTable";
 import CartIcon from '../icons/CartIcon';
 import Checkout from "../components/cart/Checkout";
-import ConfirmationModal from "../components/confirmationModal";
+import ConfirmationModal from "../components/ConfirmationModal";
 import './button.css';
 import './windowMsg.css';
 
