@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import extras from '../../db/extras.json';
 import tosafot from '../../db/tosafot.json';
+import CheckIcon from '../../icons/CheckIcon';
 import '../../pages/button.css';
 
 const MenuLayout3 = ({ setChosenWindow, itemDetails, addItemToCart }) => {
     const itemTosafot = tosafot.data.filter(tosaf => tosaf.item_id === itemDetails.id);
     const [inputValue, setInputValue] = useState('');
     const [checkedExtras, setCheckedExtras] = useState([]);
+    const [showConfirmation, setShowConfirmation] = useState(false);
 
     const handleInputChange = (event) => {
         setInputValue(event.target.value);
@@ -24,28 +26,40 @@ const MenuLayout3 = ({ setChosenWindow, itemDetails, addItemToCart }) => {
 
     const handleAddToCart = () => {
         addItemToCart(itemDetails, checkedExtras, inputValue);
+        setShowConfirmation(true); // Show confirmation modal when the item is added
+        setTimeout(() => setShowConfirmation(false), 1000);
         // alert("item added to cart");
     };
 
     return (
         <>
             <div className='overflow-y-auto flex flex-col items-center w-[100%]'>
-                <h2 className="text-4xl font-bold">{itemDetails.name}</h2>
-                {/* <div>img here</div> */}
-                <p className="text-xl mt-2">{itemDetails.price}₪</p>
-                <p className="text-lg mt-4">{itemDetails.desc}</p>
 
-                <h3 className="text-2xl font-semibold">{itemTosafot.length > 0 ? 'extras' : ''}</h3>
+                <h2 className="text-2xl font-bold">{itemDetails.name} ₪{itemDetails.price}</h2>
+                {showConfirmation && (
+                    <div className="mt-4 font-semibold items-end bg-green-100 flex flex-row rounded-2xl border border-green-500 text-green-700 px-8 py-2" role="alert">
+                        <CheckIcon />
+                        <p className="text-sm ml-1">Item added to cart.</p>
+                    </div>
+                )}
+                {/* <div>img here</div> */}
+                {/* <p className="text-xl mt-2">{itemDetails.price}₪</p> */}
+                <p className="text-xl mt-4">{itemDetails.desc}</p>
+                <div className='flex flex-row justify-between border-b-2 w-full font-semibold'>
+                    <h3 className="text-xl text-start ">{itemTosafot.length > 0 ? 'extras' : ''}</h3>
+                    <button>clear extras</button>
+                </div>
                 {itemTosafot.length > 0 ? (
                     <div className="flex flex-wrap justify-start">
                         {itemTosafot.map((tosaf, index) => {
+
                             const extra = extras.data.find(extra => extra.semel === tosaf.tosaf_id);
 
                             return (
-                                <div key={index} className="flex flex-col items-start mt-2 mr-4">
+                                <div key={index} className="flex flex-col items-start mt-2 mr-4 font-semibold">
                                     {extra && (
                                         <div className="flex flex-row items-center gap-1">
-                                            
+
                                             <input
                                                 id="default-checkbox"
                                                 type="checkbox"
@@ -66,6 +80,8 @@ const MenuLayout3 = ({ setChosenWindow, itemDetails, addItemToCart }) => {
                 ) : (
                     <></>
                 )}
+
+
 
                 {/* <div className='items-start align-top'>
                     <input
@@ -95,6 +111,9 @@ const MenuLayout3 = ({ setChosenWindow, itemDetails, addItemToCart }) => {
                     Back
                 </button>
             </div>
+
+
+
         </>
     );
 };
