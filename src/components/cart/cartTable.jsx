@@ -19,7 +19,7 @@ const CartTable = ({ groupedItems }) => {
                     // Ensure price and quantity are numbers
                     const itemPrice = Number(item.itemDetails.price);
                     const itemQuantity = Number(item.quantity);
-                    const extrasTotal = item.extras.reduce((sum, extra) => sum + Number(extra.price), 0);
+                    const extrasTotal = item.extras.reduce((sum, extra) => sum + (Number(extra.price)*itemQuantity), 0);
                     const finalPrice = (itemPrice * itemQuantity + extrasTotal).toFixed(2);
 
                     return (
