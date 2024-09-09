@@ -61,7 +61,7 @@ function App() {
     <>
       <Header />
       <Router>
-        <div className="h-screen bg-cover bg-center flex justify-center items-center w-full bg-slate-600">
+        <div className="h-screen sm:h-auto md:h-screen bg-cover bg-center flex justify-center items-center w-full sm:w-auto md:w-auto bg-slate-600">
           <Routes>
             <Route path="/" element={<SeatingPage onSelectOption={handleSelectOption} />} />
             <Route path="/menu" element={<MenuPage addItemToCart={addItemToCart} cartItems={cartItems} />} />
@@ -72,6 +72,7 @@ function App() {
       <Footer />
     </>
   );
+  
 }
 
 export default App;
