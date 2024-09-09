@@ -49,7 +49,7 @@ function App() {
   useEffect(() => {
     const storedCartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
     setCartItems(storedCartItems);
-}, []);
+  }, []);
 
 
   useEffect(() => {
@@ -57,21 +57,22 @@ function App() {
   }, [cartItems]);
 
 
-return (
-  <>
-    <Header />
-    <Router>
-      <div className="h-screen sm:h-auto md:h-screen bg-cover bg-center flex justify-center items-center w-full sm:w-auto md:w-full bg-slate-600 pb-40">
-        <Routes>
-          <Route path="/" element={<SeatingPage onSelectOption={handleSelectOption} />} />
-          <Route path="/menu" element={<MenuPage addItemToCart={addItemToCart} cartItems={cartItems} />} />
-          <Route path="/cart" element={<Cart cartItems={cartItems} setCartItems={setCartItems}/>} />
-        </Routes>
-      </div>
-    </Router>
-    <Footer />
-  </>
-);
+  return (
+    <>
+      <Header />
+      <Router>
+        {/* <div className="h-screen sm:h-auto md:h-screen bg-cover bg-center flex justify-center items-center w-full sm:w-auto md:w-full bg-slate-600"> */}
+        <div className="h-screen sm:h-auto md:h-screen bg-cover bg-center flex justify-center items-center w-full sm:w-auto md:w-full bg-slate-600 pb-32">
+          <Routes>
+            <Route path="/" element={<SeatingPage onSelectOption={handleSelectOption} />} />
+            <Route path="/menu" element={<MenuPage addItemToCart={addItemToCart} cartItems={cartItems} />} />
+            <Route path="/cart" element={<Cart cartItems={cartItems} setCartItems={setCartItems} />} />
+          </Routes>
+        </div>
+      </Router>
+      <Footer />
+    </>
+  );
 
 }
 
