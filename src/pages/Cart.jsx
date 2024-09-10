@@ -62,24 +62,26 @@ const Cart = ({ cartItems, setCartItems }) => {
             <>
                 <div className="flex flex-col items-center w-full">
                     {/* <div className="flex items-center w-full mb-4 px-4 relative justify-between"> */}
-                    <div className="flex justify-between items-start w-full">
+                    <div className="flex justify-between items-start w-full relative mb-4">
                         {groupedItems.length > 0 ? (
-                            <button
+                            <div className="flex justify-between items-start w-full relative mb-4"><button
                                 className="button hover:bg-red-700 w-fit py-2 bg-red-600 font-normal text-base"
                                 onClick={() => setShowConfirmation(true)}
                             >
                                 Clear Cart
                             </button>
+                                <h2 className="text-4xl font-bold mr-64">
+                                    Cart
+                                </h2>
+                            </div>
                         ) : (
-                            // <div className="w-20"></div>
-                            <></>
+                            <>
+                                <h2 className="text-4xl font-bold mx-auto">
+                                    Cart
+                                </h2>
+                            </>
                         )}
-                        <h2 className="text-4xl font-bold mx-auto">
-                            Cart
-                        </h2>
-                        {/* <div className="w-20"></div> */}
                     </div>
-
                     <div className="flex flex-col items-center mt-auto">
                         {groupedItems.length > 0 ? (
                             <CartTable groupedItems={groupedItems} />

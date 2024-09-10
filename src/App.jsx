@@ -64,7 +64,7 @@ function App() {
       <Header />
       <Router>
         {/* <div className="h-screen sm:h-auto md:h-screen bg-cover bg-center flex justify-center items-center w-full sm:w-auto md:w-full bg-slate-600"> */}
-        <div className="h-screen sm:h-auto md:h-screen bg-cover bg-center flex justify-center items-center w-full sm:w-auto md:w-full bg-slate-600 pb-32">
+        <div className="h-screen sm:h-auto md:h-screen bg-cover bg-center flex justify-center items-center w-full sm:w-auto md:w-full bg-slate-600 pb-24">
           <Routes>
             <Route path="/" element={<SeatingPage onSelectOption={handleSelectOption} />} />
             <Route path="/menu" element={<MenuPage addItemToCart={addItemToCart} cartItems={cartItems} />} />
