@@ -24,16 +24,18 @@ function App() {
     setSeatOption(option);
   };
 
-  const addItemToCart = (itemDetails, checkedExtras, inputValue) => {
+  const addItemToCart = (itemDetails, checkedExtras, inputValue, quantity) => {
     setCartItems((prevItems) => [
       ...prevItems,
       {
         itemDetails,
         extras: checkedExtras,
-        customText: inputValue
+        customText: inputValue,
+        quantity
       }
     ]);
   };
+
 
   useEffect(() => {
     // console.log("Cart items updated:", cartItems);

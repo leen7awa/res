@@ -2,16 +2,29 @@ import React, { useState } from 'react';
 import extras from '../../db/extras.json';
 import tosafot from '../../db/tosafot.json';
 import CheckIcon from '../../icons/CheckIcon';
+import PlusIcon from '../../icons/PlusIcon';
+import MinusIcon from '../../icons/MinusIcon';
 import '../../pages/button.css';
 
 const MenuLayout3 = ({ setChosenWindow, itemDetails, addItemToCart }) => {
     const itemTosafot = tosafot.data.filter(tosaf => tosaf.item_id === itemDetails.id);
     const [inputValue, setInputValue] = useState('');
     const [checkedExtras, setCheckedExtras] = useState([]);
+    const [quantity, setQuantity] = useState(1);
     const [showConfirmation, setShowConfirmation] = useState(false);
 
     const handleInputChange = (event) => {
         setInputValue(event.target.value);
+    };
+
+    const handleQuantityDecrement = () => {
+        if (quantity > 1) {
+            setQuantity(quantity - 1);
+        }
+    };
+
+    const handleQuantityIncrement = () => {
+        setQuantity(quantity + 1);
     };
 
     const handleCheckboxChange = (event, extraName, tosafPrice) => {
@@ -23,9 +36,12 @@ const MenuLayout3 = ({ setChosenWindow, itemDetails, addItemToCart }) => {
     };
 
     const handleAddToCart = () => {
-        addItemToCart(itemDetails, checkedExtras, inputValue);
+        addItemToCart(itemDetails, checkedExtras, inputValue, quantity); // Pass quantity to addItemToCart
         setShowConfirmation(true);
         setTimeout(() => setShowConfirmation(false), 1000);
+        setTimeout(() => {
+            setChosenWindow(1);
+        }, 1000);
     };
 
     // Function to clear all checkboxes
@@ -50,7 +66,12 @@ const MenuLayout3 = ({ setChosenWindow, itemDetails, addItemToCart }) => {
                     <>
                         <div className='flex flex-row justify-between border-b-2 w-full font-semibold'>
                             <h3 className="text-xl text-start">extras</h3>
-                            <button onClick={handleClearExtras}>clear extras</button>
+                            {checkedExtras.length > 0 &&
+                                (<button
+                                    className='border border-blue-950 px-2 rounded-2xl bg-slate-200'
+                                    onClick={handleClearExtras}
+                                >clear extras</button>)
+                            }
                         </div>
                         <div className="flex flex-wrap justify-start">
                             {itemTosafot.map((tosaf, index) => {
@@ -80,19 +101,51 @@ const MenuLayout3 = ({ setChosenWindow, itemDetails, addItemToCart }) => {
                     </>
                 ) : null}
 
-                <button
-                    className="button"
-                    onClick={handleAddToCart}
-                >
-                    Add to cart
-                </button>
+                {/* Updated Quantity Input Field */}
+                <div className="mt-4 flex items-center gap-2">
+                    <form className="mx-auto">
+                        <div className="relative flex items-center">
+                            <button
+                                type="button"
+                                id="decrement-button"
+                                onClick={handleQuantityDecrement}
+                                className="flex-shrink-0 bg-gray-100 hover:bg-gray-300 inline-flex items-center justify-center border border-gray-300 rounded-md h-5 w-5 focus:ring-gray-100 focus:ring-2 focus:outline-none"
+                            >
+                                <MinusIcon />
+                            </button>
+                            <input
+                                type="text"
+                                id="counter-input"
+                                value={quantity}
+                                readOnly
+                                className="flex-shrink-0 text-black border-0 bg-transparent focus:outline-none focus:ring-0 max-w-[2.5rem] text-center"
+                            />
+                            <button
+                                type="button"
+                                id="increment-button"
+                                onClick={handleQuantityIncrement}
+                                className="flex-shrink-0 bg-gray-100 hover:bg-gray-300 inline-flex items-center justify-center border border-gray-300 rounded-md h-5 w-5 focus:ring-gray-100 focus:ring-2 focus:outline-none"
+                            >
+                                <PlusIcon />
+                            </button>
+                        </div>
+                    </form>
+                </div>
 
-                <button
-                    className="button bg-slate-500 hover:bg-slate-600 p-1 w-1/4 mt-4"
-                    onClick={() => setChosenWindow(2)}
-                >
-                    Back
-                </button>
+                <div className='flex flex-col items-center'>
+                    <button
+                        className="button w-auto scale-90"
+                        onClick={handleAddToCart}
+                    >
+                        Add to cart
+                    </button>
+                    <button
+                        className="button bg-slate-500 hover:bg-slate-600 w-fit py-2 mt-2"
+                        onClick={() => setChosenWindow(2)}
+                    >
+                        Back
+                    </button>
+                </div>
             </div>
         </>
     );

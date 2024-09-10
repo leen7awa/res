@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useSyncExternalStore } from "react";
+import React, { useState } from "react";
 import CartTable from "../components/cart/cartTable";
 import CartIcon from '../icons/CartIcon';
 import Checkout from "../components/cart/Checkout";
@@ -10,8 +10,8 @@ const Cart = ({ cartItems, setCartItems }) => {
     const [activeTab, setActiveTab] = useState("cart");
     const [showConfirmation, setShowConfirmation] = useState(false);
 
+    // Group items based on name, extras, and custom text, and use the actual quantity from cartItems
     const groupedItems = cartItems.reduce((acc, item) => {
-
         const existingItem = acc.find(
             (i) =>
                 i.itemDetails.name === item.itemDetails.name &&
@@ -20,13 +20,14 @@ const Cart = ({ cartItems, setCartItems }) => {
         );
 
         if (existingItem) {
-            existingItem.quantity += 1;
+            existingItem.quantity += item.quantity; // Add the actual quantity
         } else {
-            acc.push({ ...item, quantity: 1 });
+            acc.push({ ...item });
         }
         return acc;
     }, []);
 
+    // Calculate the total price of items in the cart including extras
     const calculateTotal = () => {
         return groupedItems.reduce((total, item) => {
             const itemTotal = item.itemDetails.price * item.quantity; // Base item total
@@ -38,12 +39,10 @@ const Cart = ({ cartItems, setCartItems }) => {
         }, 0);
     };
 
-
     const clearCart = () => {
         localStorage.removeItem("cartItems"); // Remove items from localStorage
         setCartItems([]); // Clear the cartItems in state
     };
-
 
     const totalCost = calculateTotal(); // Calculate total once for display
 
@@ -62,26 +61,20 @@ const Cart = ({ cartItems, setCartItems }) => {
         return (
             <>
                 <div className="flex flex-col items-center mt-4">
-                    {/* Adjusted flexbox layout */}
                     <div className="flex items-center w-full mb-4 px-4 relative">
                         {groupedItems.length > 0 ? (
                             <button
                                 className="button hover:bg-red-700 w-fit py-2 bg-red-600 font-normal text-base"
-                                // onClick={clearCart}
                                 onClick={() => setShowConfirmation(true)}
                             >
                                 Clear Cart
                             </button>
                         ) : (
-                            <div className="w-20"></div> // Placeholder to maintain layout
+                            <div className="w-20"></div>
                         )}
-
-                        {/* Center the Cart header */}
                         <h2 className="text-4xl font-bold text-center mx-auto">
                             Cart
                         </h2>
-
-                        {/* Placeholder div for alignment */}
                         <div className="w-20"></div>
                     </div>
 
@@ -98,8 +91,6 @@ const Cart = ({ cartItems, setCartItems }) => {
                         )}
                     </div>
                 </div>
-
-                {/* Conditional Rendering for Buttons */}
                 <div className="flex flex-col space-y-2 mt-auto mb-2 items-center w-screen">
                     {groupedItems.length > 0 && (
                         <>
@@ -111,7 +102,6 @@ const Cart = ({ cartItems, setCartItems }) => {
                             </button>
                         </>
                     )}
-                    {/* Always show 'Back to menu' button */}
                     <button
                         className="button py-2"
                         onClick={() => {
