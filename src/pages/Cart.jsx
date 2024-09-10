@@ -60,8 +60,9 @@ const Cart = ({ cartItems, setCartItems }) => {
     const renderCart = () => {
         return (
             <>
-                <div className="flex flex-col items-center mt-4">
-                    <div className="flex items-center w-full mb-4 px-4 relative">
+                <div className="flex flex-col items-center w-full">
+                    {/* <div className="flex items-center w-full mb-4 px-4 relative justify-between"> */}
+                    <div className="flex justify-between items-start w-full">
                         {groupedItems.length > 0 ? (
                             <button
                                 className="button hover:bg-red-700 w-fit py-2 bg-red-600 font-normal text-base"
@@ -70,12 +71,13 @@ const Cart = ({ cartItems, setCartItems }) => {
                                 Clear Cart
                             </button>
                         ) : (
-                            <div className="w-20"></div>
+                            // <div className="w-20"></div>
+                            <></>
                         )}
-                        <h2 className="text-4xl font-bold text-center mx-auto">
+                        <h2 className="text-4xl font-bold mx-auto">
                             Cart
                         </h2>
-                        <div className="w-20"></div>
+                        {/* <div className="w-20"></div> */}
                     </div>
 
                     <div className="flex flex-col items-center mt-auto">
@@ -117,7 +119,7 @@ const Cart = ({ cartItems, setCartItems }) => {
 
     return (
         <>
-            <div className="box max-w-screen-2xl h-[100%] items-center">
+            <div className="box max-w-screen h-[100%] items-center">
                 {renderCartWindows()}
             </div>
 
