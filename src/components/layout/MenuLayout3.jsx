@@ -50,7 +50,7 @@ const MenuLayout3 = ({ setChosenWindow, itemDetails, addItemToCart }) => {
     };
 
     return (
-        <div className="flex flex-col h-screen w-full">
+        <div className="flex flex-col w-full">
             {/* Top Section */}
             <div className="flex-shrink-0 justify-center">
                 <h2 className="text-2xl font-bold">{itemDetails.name} ₪{itemDetails.price}</h2>
