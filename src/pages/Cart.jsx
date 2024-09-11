@@ -72,12 +72,11 @@ const Cart = ({ cartItems, setCartItems }) => {
                             </button>
                         ) : (
                             // <div className="w-20"></div>
-                            <>
-                                <h2 className="text-4xl font-bold mx-auto">
-                                    Cart
-                                </h2>
-                            </>
+                            <></>
                         )}
+                        <h2 className="text-4xl font-bold mx-auto">
+                            Cart
+                        </h2>
                         {/* <div className="w-20"></div> */}
                     </div>
                     <div className="flex flex-col items-center mt-auto">
@@ -119,7 +118,7 @@ const Cart = ({ cartItems, setCartItems }) => {
 
     return (
         <>
-            <div className="box max-w-screen h-[100%] items-center">
+            <div className="box items-center">
                 {renderCartWindows()}
             </div>
 

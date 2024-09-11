@@ -30,7 +30,9 @@
   text-align: center;
   width: 90%;
   max-width: 40rem;
-  max-height: 40rem;
+  height: 40rem;
+  /* min-height: 40rem;
+  max-height: 40rem; */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   background-color: white;
   display: flex;
@@ -76,4 +78,3 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
-

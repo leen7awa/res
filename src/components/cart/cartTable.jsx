@@ -4,15 +4,16 @@ const CartTable = ({ groupedItems }) => {
     return (
         <div className="max-h-[350px] overflow-y-auto w-[100%]">
             <table className="table-auto">
-                {/* <thead className="sticky top-0 bg-slate-200">
-                <tr>
+                {/* <thead className="sticky top-0 bg-slate-200"> */}
+                <thead>
+                {/* <tr>
                     <th className="border border-gray-300 px-4 py-2">Item</th>
                     <th className="border border-gray-300 px-4 py-2">Quantity</th>
                     <th className="border border-gray-300 px-4 py-2">Extras</th>
                     <th className="border border-gray-300 px-4 py-2">Price per Item</th>
                     <th className="border border-gray-300 px-4 py-2">Final Price</th>
-                </tr>
-            </thead> */}
+                </tr> */}
+            </thead>
                 <tbody>
                     {groupedItems.map((item, index) => {
                         // Ensure price and quantity are numbers
@@ -36,7 +37,7 @@ const CartTable = ({ groupedItems }) => {
                                         <td className="py-0">
                                             {item.extras.map((extra, extraIndex) => (
                                                 extra.price > 0 && (
-                                                    <div key={extraIndex} className="mb-0">₪{extra.price}</div>
+                                                    <p key={extraIndex} className="mb-0">₪{extra.price}</p>
                                                 )
                                             ))}
                                         </td>

@@ -51,7 +51,7 @@ const MenuLayout3 = ({ setChosenWindow, itemDetails, addItemToCart }) => {
 
     return (
         <>
-            <div className='overflow-y-auto flex flex-col items-center w-[100%]'>
+            <div className='overflow-y-auto flex flex-col items-center'>
 
                 <h2 className="text-2xl font-bold">{itemDetails.name} ₪{itemDetails.price}</h2>
                 {showConfirmation && (

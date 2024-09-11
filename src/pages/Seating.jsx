@@ -14,7 +14,8 @@ const Seating = ({ onSelectOption }) => {
   };
 
   return (
-    <div className="box">
+    // <div className="box min-h-[40rem]">
+    <div className="box justify-center">
       <h2 className="text-4xl font-semibold">Select order type</h2>
       <div className="flex flex-row w-fit justify-center items-center mx-auto gap-4">
         <button

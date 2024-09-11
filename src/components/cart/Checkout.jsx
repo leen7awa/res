@@ -13,7 +13,8 @@ const Checkout = ({ setActiveTab }) => {
 
     return (
         <>
-            <div className="box mt-24 shadow-2xl shadow-blue-900">
+            {/* <div className="box mt-24 shadow-2xl shadow-blue-900"> */}
+            <div className="box mt-4 shadow-sm shadow-blue-900">
                 <div className="flex justify-between items-start">
                     <button className="self-start border-2 border-black px-4 rounded-2xl"
                         onClick={() => { setActiveTab('cart') }}>
@@ -44,7 +45,7 @@ const Checkout = ({ setActiveTab }) => {
                 </div>
 
 
-                <div className="flex flex-row max-w-[400px] justify-center items-center mx-auto gap-4 rounded-none px-2">
+                <div className="flex flex-row justify-center items-center mx-auto gap-4 rounded-none px-2 mt-8">
                     {/* <button
                         id="takeaway-btn"
                         className="button bg-blue-400"
