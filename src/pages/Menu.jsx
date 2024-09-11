@@ -44,7 +44,7 @@ const Menu = ({ addItemToCart, cartItems }) => {
     };
 
     return (
-        <div className="box items-center">
+        <div className="box justify-center items-center">
             {pickWindow()}
         </div>
     );

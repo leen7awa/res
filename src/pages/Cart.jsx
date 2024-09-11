@@ -81,7 +81,7 @@ const Cart = ({ cartItems, setCartItems }) => {
                     </div>
                     <div className="flex flex-col items-center mt-auto">
                         {groupedItems.length > 0 ? (
-                            <CartTable groupedItems={groupedItems} />
+                            <CartTable groupedItems={groupedItems} /> 
                         ) : (
                             <div className="h-40 w-48 mt-32">
                                 <div style={{ transform: 'scale(2)', display: 'inline-block' }}>
@@ -90,6 +90,7 @@ const Cart = ({ cartItems, setCartItems }) => {
                                 <h3 className="font-bold mt-4">Your cart is empty.</h3>
                             </div>
                         )}
+                       
                     </div>
                 </div>
                 <div className="flex flex-col space-y-2 mt-auto mb-2 items-center w-screen">

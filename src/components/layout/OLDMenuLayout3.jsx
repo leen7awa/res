@@ -50,9 +50,9 @@ const MenuLayout3 = ({ setChosenWindow, itemDetails, addItemToCart }) => {
     };
 
     return (
-        <div className="flex flex-col h-screen w-full">
-            {/* Top Section */}
-            <div className="flex-shrink-0 justify-center">
+        <>
+            <div className='overflow-y-auto flex flex-col justify-center box shadow-sm shadow-blue-950'>
+
                 <h2 className="text-2xl font-bold">{itemDetails.name} ₪{itemDetails.price}</h2>
                 {showConfirmation && (
                     <div className="mt-4 font-semibold items-end bg-green-100 flex flex-row rounded-2xl border border-green-500 text-green-700 px-8 py-2" role="alert">
@@ -60,12 +60,9 @@ const MenuLayout3 = ({ setChosenWindow, itemDetails, addItemToCart }) => {
                         <p className="text-sm ml-1">Item added to cart.</p>
                     </div>
                 )}
-                <p className="text-xl mt-4">{itemDetails.desc}</p>
-            </div>
 
-            {/* Middle Section */}
-            <div className="flex-wrap min-h-0 max-h-[400px] bg-slate-100 rounded-xl">
-            {itemTosafot.length > 0 && (
+                <p className="text-xl mt-4">{itemDetails.desc}</p>
+                {itemTosafot.length > 0 && (
                     <>
                         <div className='flex flex-row justify-between border-b-2 w-full font-semibold'>
                             <h3 className="text-xl text-start">extras</h3>
@@ -77,7 +74,7 @@ const MenuLayout3 = ({ setChosenWindow, itemDetails, addItemToCart }) => {
                             }
                         </div>
                         <div
-                            className="flex flex-wrap justify-center items-start max-h-[300px] mt-4 overflow-y-auto"
+                            className="flex flex-wrap justify-center items-start overflow-y-auto"
                         >
                             <div className="grid grid-cols-4 gap-4">
                                 {itemTosafot.map((tosaf, index) => {
@@ -106,11 +103,9 @@ const MenuLayout3 = ({ setChosenWindow, itemDetails, addItemToCart }) => {
 
                         </div>
                     </>
-                )}            </div>
-
-            {/* Bottom Section */}
-            <div className="flex-1">
-            <div className="mt-4 flex items-center gap-2">
+                )}
+                <div className=''>
+                    <div className="mt-4 flex items-center gap-2">
                         <form className="mx-auto my-0">
                             <div className="relative flex items-center">
                                 <button
@@ -154,10 +149,10 @@ const MenuLayout3 = ({ setChosenWindow, itemDetails, addItemToCart }) => {
                             Back
                         </button>
                     </div>
+                </div>
             </div>
-        </div>
+        </>
     );
-
 };
 
 export default MenuLayout3;
