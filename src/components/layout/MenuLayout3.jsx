@@ -77,9 +77,8 @@ const MenuLayout3 = ({ setChosenWindow, itemDetails, addItemToCart }) => {
                             }
                         </div>
                         <div
-                            className="flex flex-wrap justify-center items-start max-h-[300px] mt-4 overflow-y-auto"
-                        >
-                            <div className="grid grid-cols-4 gap-4">
+                            className="flex flex-wrap justify-center items-start max-h-[300px] mt-4 overflow-y-auto">
+                            <div className="grid grid-cols-4 md:grid-cols-3 sm:grid-cols-3 gap-4">
                                 {itemTosafot.map((tosaf, index) => {
                                     const extra = extras.data.find(extra => extra.semel === tosaf.tosaf_id);
                                     const isChecked = checkedExtras.some(checkedExtra => checkedExtra.name === extra?.name);
