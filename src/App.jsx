@@ -19,6 +19,7 @@ import Cart from "./pages/Cart";
 function App() {
   const [seatOption, setSeatOption] = useState("");
   const [cartItems, setCartItems] = useState([]);
+  const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   const handleSelectOption = (option) => {
     setSeatOption(option);
@@ -56,24 +57,22 @@ function App() {
 
   useEffect(() => {
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    
   }, [cartItems]);
 
 
   return (
     <>
-    <div className="bg-slate-400">
-      <Header />
-      <Router>
-        {/* <div className="h-screen sm:h-auto md:h-screen bg-cover bg-center flex justify-center items-center w-full sm:w-auto md:w-full bg-slate-600"> */}
-        {/* <div className="h-screen sm:h-auto md:h-screen bg-cover bg-center flex justify-center items-center w-full sm:w-auto md:w-full bg-slate-600"> */}
+      <div className="bg-slate-400">
+        <Header cartItemsCount={totalQuantity} />
+        <Router>
           <Routes>
             <Route path="/" element={<SeatingPage onSelectOption={handleSelectOption} />} />
             <Route path="/menu" element={<MenuPage addItemToCart={addItemToCart} cartItems={cartItems} />} />
             <Route path="/cart" element={<Cart cartItems={cartItems} setCartItems={setCartItems} />} />
           </Routes>
-        {/* </div> */}
-      </Router>
-      <Footer />
+        </Router>
+        <Footer />
       </div>
     </>
   );

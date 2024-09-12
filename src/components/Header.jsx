@@ -1,7 +1,7 @@
 import CartIcon from "../icons/CartIcon";
 import LanguageIcon from "../icons/LanguageIcon";
 
-const Header = () => {
+const Header = ({cartItemsCount}) => {
     const commonButtonStyles = "text-gray-700 hover:text-blue-600 flex items-center justify-center";
 
     return (
@@ -16,7 +16,7 @@ const Header = () => {
                         <LanguageIcon />
                     </a>
                     <a href="/cart" className={commonButtonStyles}>
-                        <CartIcon />
+                        <CartIcon cartItemCount={cartItemsCount}/>
                     </a>
                 </nav>
             </div>

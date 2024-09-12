@@ -60,25 +60,25 @@ const MenuLayout3 = ({ setChosenWindow, itemDetails, addItemToCart }) => {
                         <p className="text-sm ml-1">Item added to cart.</p>
                     </div>
                 )}
-                <p className="text-xl mt-4">{itemDetails.desc}</p>
+                <p className="text-xl my-4">{itemDetails.desc}</p>
             </div>
 
             {/* Middle Section */}
             <div className="flex-wrap min-h-0 max-h-[400px] bg-slate-100 rounded-xl">
-            {itemTosafot.length > 0 && (
+                {itemTosafot.length > 0 && (
                     <>
-                        <div className='flex flex-row justify-between border-b-2 w-full font-semibold'>
-                            <h3 className="text-xl text-start">extras</h3>
+                        <div className='flex flex-row justify-between border-b-2 w-auto font-semibold my-2 mx-2'>
+                            <h3 className="text-lg text-start ml-2">extras</h3>
                             {checkedExtras.length > 0 &&
                                 (<button
-                                    className='border border-blue-950 px-2 rounded-2xl bg-slate-200'
+                                    className='border border-blue-950 px-2 rounded-2xl bg-slate-200 mr-4'
                                     onClick={handleClearExtras}
                                 >clear extras</button>)
                             }
                         </div>
                         <div
                             className="flex flex-wrap justify-center items-start max-h-[300px] mt-4 overflow-y-auto">
-                            <div className="grid grid-cols-4 md:grid-cols-3 sm:grid-cols-3 gap-4">
+                            <div className="grid grid-cols-4 gap-4 mb-4">
                                 {itemTosafot.map((tosaf, index) => {
                                     const extra = extras.data.find(extra => extra.semel === tosaf.tosaf_id);
                                     const isChecked = checkedExtras.some(checkedExtra => checkedExtra.name === extra?.name);
@@ -105,54 +105,55 @@ const MenuLayout3 = ({ setChosenWindow, itemDetails, addItemToCart }) => {
 
                         </div>
                     </>
-                )}            </div>
+                )}
+            </div>
 
             {/* Bottom Section */}
             <div className="flex-1">
-            <div className="mt-4 flex items-center gap-2">
-                        <form className="mx-auto my-0">
-                            <div className="relative flex items-center">
-                                <button
-                                    type="button"
-                                    id="decrement-button"
-                                    onClick={handleQuantityDecrement}
-                                    className="flex-shrink-0 bg-gray-100 hover:bg-gray-300 inline-flex items-center justify-center border border-gray-300 rounded-md h-5 w-5 focus:ring-gray-100 focus:ring-2 focus:outline-none"
-                                >
-                                    <MinusIcon />
-                                </button>
-                                <input
-                                    type="text"
-                                    id="counter-input"
-                                    value={quantity}
-                                    readOnly
-                                    className=" text-black border-0 focus:outline-none focus:ring-0 max-w-[2.5rem] text-center"
-                                />
-                                <button
-                                    type="button"
-                                    id="increment-button"
-                                    onClick={handleQuantityIncrement}
-                                    className="flex-shrink-0 bg-gray-100 hover:bg-gray-300 inline-flex items-center justify-center border border-gray-300 rounded-md h-5 w-5 focus:ring-gray-100 focus:ring-2 focus:outline-none"
-                                >
-                                    <PlusIcon />
-                                </button>
-                            </div>
-                        </form>
-                    </div>
+                <div className="mt-4 flex items-center gap-2">
+                    <form className="mx-auto my-0">
+                        <div className="relative flex items-center">
+                            <button
+                                type="button"
+                                id="decrement-button"
+                                onClick={handleQuantityDecrement}
+                                className="flex-shrink-0 bg-gray-100 hover:bg-gray-300 inline-flex items-center justify-center border border-gray-300 rounded-md h-5 w-5 focus:ring-gray-100 focus:ring-2 focus:outline-none"
+                            >
+                                <MinusIcon />
+                            </button>
+                            <input
+                                type="text"
+                                id="counter-input"
+                                value={quantity}
+                                readOnly
+                                className=" text-black border-0 focus:outline-none focus:ring-0 max-w-[2.5rem] text-center"
+                            />
+                            <button
+                                type="button"
+                                id="increment-button"
+                                onClick={handleQuantityIncrement}
+                                className="flex-shrink-0 bg-gray-100 hover:bg-gray-300 inline-flex items-center justify-center border border-gray-300 rounded-md h-5 w-5 focus:ring-gray-100 focus:ring-2 focus:outline-none"
+                            >
+                                <PlusIcon />
+                            </button>
+                        </div>
+                    </form>
+                </div>
 
-                    <div className='flex flex-col items-center'>
-                        <button
-                            className="button w-auto scale-90"
-                            onClick={handleAddToCart}
-                        >
-                            Add to cart
-                        </button>
-                        <button
-                            className="button bg-slate-500 hover:bg-slate-600 w-fit py-2 mt-2"
-                            onClick={() => setChosenWindow(2)}
-                        >
-                            Back
-                        </button>
-                    </div>
+                <div className='flex flex-col items-center'>
+                    <button
+                        className="button w-auto"
+                        onClick={handleAddToCart}
+                    >
+                        Add to cart
+                    </button>
+                    <button
+                        className="button bg-slate-500 hover:bg-slate-600 w-fit py-2 mt-2"
+                        onClick={() => setChosenWindow(2)}
+                    >
+                        Back
+                    </button>
+                </div>
             </div>
         </div>
     );
