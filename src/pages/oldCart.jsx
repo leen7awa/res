@@ -60,37 +60,39 @@ const Cart = ({ cartItems, setCartItems }) => {
     const renderCart = () => {
         return (
             <>
-                <div className="flex flex-col w-full">
-                    {/* top section */}
-                    {groupedItems.length > 0 && (
-                        <div className="relative flex-1 flex items-center p-4">
+                <div className="flex flex-col items-center w-full">
+                    {/* <div className="flex items-center w-full mb-4 px-4 relative justify-between"> */}
+                    <div className="flex justify-between items-start w-full relative mb-4">
+                        {groupedItems.length > 0 ? (
                             <button
-                                className="relative z-10 text-white px-4 py-2 rounded-2xl bg-red-600 hover:bg-red-700"
+                                className="button hover:bg-red-700 w-fit py-2 bg-red-600 font-normal text-base"
                                 onClick={() => setShowConfirmation(true)}
                             >
                                 Clear Cart
                             </button>
-                            <h2 className="absolute inset-0 flex items-center justify-center text-black text-3xl">
-                                Cart
-                            </h2>
-                        </div>
-                    )}
-                </div>
-                {/* middle section */}
-                <div className="flex flex-grow items-top text-center justify-center mt-auto">
-                    {groupedItems.length > 0 ? (
-                        <CartTable groupedItems={groupedItems} />
-                    ) : (
-                        <div className="h-40 w-48 mt-32">
-                            <div style={{ transform: 'scale(2)', display: 'inline-block' }}>
-                                <CartIcon />
+                        ) : (
+                            // <div className="w-20"></div>
+                            <></>
+                        )}
+                        <h2 className="text-4xl font-bold mx-auto">
+                            Cart
+                        </h2>
+                        {/* <div className="w-20"></div> */}
+                    </div>
+                    <div className="flex flex-col items-center mt-auto">
+                        {groupedItems.length > 0 ? (
+                            <CartTable groupedItems={groupedItems} /> 
+                        ) : (
+                            <div className="h-40 w-48 mt-32">
+                                <div style={{ transform: 'scale(2)', display: 'inline-block' }}>
+                                    <CartIcon />
+                                </div>
+                                <h3 className="font-bold mt-4">Your cart is empty.</h3>
                             </div>
-                            <h3 className="font-bold mt-4">Your cart is empty.</h3>
-                        </div>
-                    )}
-
+                        )}
+                       
+                    </div>
                 </div>
-                {/* bottom section */}
                 <div className="flex flex-col space-y-2 mt-auto mb-2 items-center w-screen">
                     {groupedItems.length > 0 && (
                         <>
@@ -113,8 +115,6 @@ const Cart = ({ cartItems, setCartItems }) => {
                 </div>
             </>
         );
-
-
     };
 
     return (
